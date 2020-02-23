@@ -1,13 +1,13 @@
 const fs = require('fs')
 const strftime = require('strftime')
-const randOutput = require('random-seed').create("Seed for output decision")
-const randPage = require('random-seed').create("Seed for page index")
-const randMethod = require('random-seed').create("Seed for method index")
-const randStatus = require('random-seed').create("Seed for status index")
+const randOutput = require('random-seed').create('Seed for output decision')
+const randPage = require('random-seed').create('Seed for page index')
+const randMethod = require('random-seed').create('Seed for method index')
+const randStatus = require('random-seed').create('Seed for status index')
 const config = require('./config.js')
 
 class Generator {
-  static generate() {
+  static generate () {
     // open log file for writing
     const logFileDescriptor = fs.openSync(config.outputFile, 'w')
 
@@ -31,14 +31,14 @@ class Generator {
 
         // generate log entry and write to file
         const logEntry = [
-            '127.0.0.1',
-            'logmoon',
-            '-',
-            '[' + strftime('%d/%b/%Y:%H:%M:%S %z') + ']',
-            '"' + method + ' /' + page + ' HTTP/1.1"',
-            status,
-            Math.floor(Math.random() * 1000),
-            '\n'
+          '127.0.0.1',
+          'logmoon',
+          '-',
+          '[' + strftime('%d/%b/%Y:%H:%M:%S %z') + ']',
+          '"' + method + ' /' + page + ' HTTP/1.1"',
+          status,
+          Math.floor(Math.random() * 1000),
+          '\n'
         ].join(' ')
 
         fs.writeSync(logFileDescriptor, logEntry)
