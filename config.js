@@ -27,7 +27,6 @@ for (let index = 0; index < 100; index++) {
 
 module.exports = {
   outputFile: '/tmp/access.log',
-  append: false,
   pages: [
     'user/alice',
     'user/bob',
@@ -51,8 +50,6 @@ module.exports = {
   probability: 0.00003,
   time: new Date(),
   generation: '(0.1(sin(x)))+.05',
-  // When toggled, divide the probability by this number
-  consoleOutput: false,
   // Toggle the generator on and off, remaining 'onInterval' seconds on and 'offInterval' seconds off
   toggle: {
     onInterval: 20,
