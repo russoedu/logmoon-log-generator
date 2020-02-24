@@ -6,13 +6,11 @@ const randMethod = require('random-seed').create('Seed for method index')
 const randStatus = require('random-seed').create('Seed for status index')
 const config = require('./config.js')
 
-let gen = true
 class Generator {
   /**
    * Run the generator
-   * @param {number} [runTime=5] in seconds
    */
-  static async run (runTime = 5) {
+  static async run () {
     console.log('LogMoon log generator started')
 
     // open log file for writing
@@ -25,7 +23,6 @@ class Generator {
     // eslint-disable-next-line no-unmodified-loop-condition
     while (gen) {
       const time = (Date.now() - startTime) / 1000
-      gen = runTime - time > 0
       const generating = config.generation(time) > 0
 
       // check whether to output
