@@ -1,6 +1,6 @@
 {
   "name": "logmoon-log-generator",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Generates a w3c-formatted HTTP access log",
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "crypto": "^1.0.1",
     "random-seed": "^0.3.0",
     "strftime": "^0.10.0"
   },
