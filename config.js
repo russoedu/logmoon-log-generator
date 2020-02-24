@@ -1,5 +1,7 @@
-const methodsArray = []
+const crypto = require('crypto')
+const randCrypto = require('random-seed').create('Seed for pages')
 
+const methodsArray = []
 for (let index = 0; index < 100; index++) {
   if (index < 90) {
     methodsArray[index] = 'GET'
@@ -12,7 +14,7 @@ for (let index = 0; index < 100; index++) {
   }
 }
 
-const statusesArray = [];
+const statusesArray = []
 for (let index = 0; index < 100; index++) {
   if (index < 90) {
     statusesArray[index] = '200'
@@ -25,34 +27,29 @@ for (let index = 0; index < 100; index++) {
   }
 }
 
+const pagesArray = []
+for (let index = 0; index < 300; index++) {
+  const r = crypto.randomBytes(randCrypto.range(16) + 4).toString('hex')
+  if (index < 130) {
+    pagesArray[index] = `user/${r}`
+  } else if (index < 260) {
+    pagesArray[index] = `profile/${r}`
+  } else if (index < 280) {
+    pagesArray[index] = `messages/${r}`
+  } else if (index < 295) {
+    pagesArray[index] = `help/${r}`
+  } else {
+    pagesArray[index] = 'not-found'
+  }
+}
 module.exports = {
   outputFile: '/tmp/access.log',
-  pages: [
-    'user/alice',
-    'user/bob',
-    'user/charles',
-    'user/daisy',
-    'profile/edit',
-    'profile/posts',
-    'profile/create',
-    'profile/delete',
-    'messages/bob',
-    'messages/daisy',
-    'messages/frank',
-    'messages/donna',
-    'help',
-    'help/faq',
-    'not-found'
-  ],
+  pages: pagesArray,
   methods: methodsArray,
   statuses: statusesArray,
   // Probability to generate a log
   probability: 0.00003,
-  time: new Date(),
-  generation: '(0.00001(sin(5x)))+0.000008',
-  // Toggle the generator on and off, remaining 'onInterval' seconds on and 'offInterval' seconds off
-  toggle: {
-    onInterval: 20,
-    offInterval: 20
+  generation: function (time) {
+    return (Math.sin(time)) + 0.3
   }
 }

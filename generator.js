@@ -11,18 +11,17 @@ class Generator {
     // open log file for writing
     const logFileDescriptor = fs.openSync(config.outputFile, 'w')
 
-    const onInterval = config.toggle.onInterval
-    const offInterval = config.toggle.offInterval
+    // const onInterval = config.toggle.onInterval
+    // const offInterval = config.toggle.offInterval
     const startTime = Date.now()
 
     // start infinite loop
     while (true) {
-      const uptime = (Date.now() - startTime) / 1000
-      const generating = (uptime % (onInterval + offInterval)) < onInterval
-      const probability = ((uptime % (onInterval + offInterval)) < onInterval) ? config.probability : config.probability / config.probabilityReducer
-      console.log(probability)
+      const time = (Date.now() - startTime) / 1000
+      const generating = config.generation(time) > 0
+
       // check whether to output
-      if (generating && randOutput.random() < probability) {
+      if (generating && randOutput.random() < config.probability) {
         // roll dice on page, method and status
         const page = config.pages[randPage.range(config.pages.length)]
         const method = config.methods[randMethod.range(config.methods.length)]
