@@ -8,7 +8,11 @@ const config = require('./config.js')
 
 let gen = true
 class Generator {
-  static run () {
+  /**
+   * Run the generator
+   * @param {number} runTime in seconds
+   */
+  static async run (runTime = Infinity) {
     console.log('LogMoon log generator started')
 
     // open log file for writing
@@ -17,11 +21,11 @@ class Generator {
     // const onInterval = config.toggle.onInterval
     // const offInterval = config.toggle.offInterval
     const startTime = Date.now()
-
     // start infinite loop
     // eslint-disable-next-line no-unmodified-loop-condition
     while (gen) {
       const time = (Date.now() - startTime) / 1000
+      gen = runTime - time > 0
       const generating = config.generation(time) > 0
 
       // check whether to output
@@ -50,11 +54,6 @@ class Generator {
         }
       }
     }
-  }
-
-  static stop () {
-    gen = false
-    console.log('LogMoon log generator stopped')
   }
 }
 
