@@ -50,7 +50,7 @@ class Generator {
     }
   }
 
-  stop () {
+  static stop () {
     gen = false
   }
 }
