@@ -6,8 +6,9 @@ const randMethod = require('random-seed').create('Seed for method index')
 const randStatus = require('random-seed').create('Seed for status index')
 const config = require('./config.js')
 
+let gen = true
 class Generator {
-  static generate () {
+  static run () {
     // open log file for writing
     const logFileDescriptor = fs.openSync(config.outputFile, 'w')
 
@@ -16,7 +17,8 @@ class Generator {
     const startTime = Date.now()
 
     // start infinite loop
-    while (true) {
+    // eslint-disable-next-line no-unmodified-loop-condition
+    while (gen) {
       const time = (Date.now() - startTime) / 1000
       const generating = config.generation(time) > 0
 
@@ -46,6 +48,10 @@ class Generator {
         }
       }
     }
+  }
+
+  stop () {
+    gen = false
   }
 }
 
