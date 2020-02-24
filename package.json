@@ -1,12 +1,12 @@
 {
   "name": "logmoon-log-generator",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Generates a w3c-formatted HTTP access log",
   "repository": {
     "type": "git",
     "url": "https://github.com/russoedu/log-generator.git"
   },
-  "main": "index.js",
+  "main": "generator.js",
   "scripts": {
     "start": "node index.js"
   },
