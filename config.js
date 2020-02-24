@@ -47,10 +47,15 @@ module.exports = {
   ],
   methods: methodsArray,
   statuses: statusesArray,
+  // Probability to generate a log
   probability: 0.00003,
+  time: new Date(),
+  generation: '(0.1(sin(x)))+.05',
+  // When toggled, divide the probability by this number
   consoleOutput: false,
+  // Toggle the generator on and off, remaining 'onInterval' seconds on and 'offInterval' seconds off
   toggle: {
-    onInterval: 90,
-    offInterval: 90
+    onInterval: 20,
+    offInterval: 20
   }
 }
