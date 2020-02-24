@@ -10,9 +10,9 @@ let gen = true
 class Generator {
   /**
    * Run the generator
-   * @param {number} runTime in seconds
+   * @param {number} [runTime=5] in seconds
    */
-  static async run (runTime = Infinity) {
+  static async run (runTime = 5) {
     console.log('LogMoon log generator started')
 
     // open log file for writing
