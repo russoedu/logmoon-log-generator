@@ -21,7 +21,7 @@ class Generator {
     const startTime = Date.now()
     // start infinite loop
     // eslint-disable-next-line no-unmodified-loop-condition
-    while (gen) {
+    while (true) {
       const time = (Date.now() - startTime) / 1000
       const generating = config.generation(time) > 0
 
