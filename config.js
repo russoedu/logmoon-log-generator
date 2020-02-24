@@ -50,6 +50,6 @@ module.exports = {
   // Probability to generate a log
   probability: 0.00003,
   generation: function (time) {
-    return (Math.sin(time)) + 0.3
+    return (Math.sin(time / 3))
   }
 }

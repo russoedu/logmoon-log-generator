@@ -27,6 +27,7 @@ class Generator {
 
       // check whether to output
       if (generating && randOutput.random() < config.probability) {
+        process.stdout.write('.')
         // roll dice on page, method and status
         const page = config.pages[randPage.range(config.pages.length)]
         const method = config.methods[randMethod.range(config.methods.length)]
