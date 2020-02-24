@@ -9,6 +9,8 @@ const config = require('./config.js')
 let gen = true
 class Generator {
   static run () {
+    console.log('LogMoon log generator started')
+
     // open log file for writing
     const logFileDescriptor = fs.openSync(config.outputFile, 'w')
 
@@ -52,6 +54,7 @@ class Generator {
 
   static stop () {
     gen = false
+    console.log('LogMoon log generator stopped')
   }
 }
 
